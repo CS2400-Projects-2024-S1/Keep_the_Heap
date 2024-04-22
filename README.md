@@ -10,7 +10,8 @@ Group: pizza
 ## Roles and Contributions:
 
 - Jennifer Garcia
-  - Add contribs here
+  - wrote part of heap.java
+  - helped with random and output txt files
 
 - Monika Crichton
   - Add contribs here
