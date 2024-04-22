@@ -70,6 +70,8 @@ public class HeapDriver {
         }
         System.out.println("...");
 
+        System.out.println("=====================================================================");
+
         scnr.close();
     }
 }
