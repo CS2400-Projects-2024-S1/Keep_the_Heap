@@ -2,6 +2,7 @@ package org.pizza;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException; 
 import java.util.ArrayList;
 
 public class HeapDriver {
@@ -24,53 +25,59 @@ public class HeapDriver {
                 fscnr.close();
             } catch (FileNotFoundException e) {
                 System.out.println("File not found.");
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
             }
         } while (!hasFile);
 
+        StringBuilder sb = new StringBuilder();
         int[] topTen;
-        System.out.println("=====================================================================");
+        sb.append("=====================================================================\n");
 
         Heap sequentialHeap = new Heap(values.size());
         sequentialHeap.buildHeapSequential(values.stream().mapToInt(i -> i).toArray());
-        System.out.print("Heap built using sequential insertions: ");
+        sb.append("Heap built using sequential insertions: ");
         topTen = sequentialHeap.getFirstTenElements();
         for (int i = 0; i < topTen.length; i++) {
-            System.out.print(topTen[i] + ",");
+            sb.append(topTen[i] + ",");
         }
-        System.out.println("...");
-        System.out.println("Number of swaps in the heap creation: " + sequentialHeap.getSwaps());
+        sb.append("...\n");
+        sb.append("Number of swaps in the heap creation: " + sequentialHeap.getSwaps() + "\n");
         for (int i = 0; i < 10; i++) {
             sequentialHeap.remove();
         }
-        System.out.print("Heap after 10 removals: ");
+        sb.append("Heap after 10 removals: ");
         topTen = sequentialHeap.getFirstTenElements();
         for (int i = 0; i < topTen.length; i++) {
-            System.out.print(topTen[i] + ",");
+            sb.append(topTen[i] + ",");
         }
-        System.out.println("...");
+        sb.append("...\n");
 
-        System.out.println();
+        sb.append("\n");
 
         Heap optimalHeap = new Heap(values.size());
         optimalHeap.buildHeapOptimal(values.stream().mapToInt(i -> i).toArray());
-        System.out.print("Heap built using optimal method: ");
+        sb.append("Heap built using optimal method: ");
         topTen = optimalHeap.getFirstTenElements();
         for (int i = 0; i < topTen.length; i++) {
-            System.out.print(topTen[i] + ",");
+            sb.append(topTen[i] + ",");
         }
-        System.out.println("...");
-        System.out.println("Number of swaps in the heap creation: " + optimalHeap.getSwaps());
+        sb.append("...\n");
+        sb.append("Number of swaps in the heap creation: " + optimalHeap.getSwaps() + "\n");
         for (int i = 0; i < 10; i++) {
             optimalHeap.remove();
         }
-        System.out.print("Heap after 10 removals: ");
+        sb.append("Heap after 10 removals: ");
         topTen = optimalHeap.getFirstTenElements();
         for (int i = 0; i < topTen.length; i++) {
-            System.out.print(topTen[i] + ",");
+            sb.append(topTen[i] + ",");
         }
-        System.out.println("...");
+        sb.append("...\n");
 
-        System.out.println("=====================================================================");
+        sb.append("=====================================================================\n");
+
+        System.out.println(sb.toString());
 
         scnr.close();
     }
