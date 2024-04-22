@@ -18,3 +18,7 @@ Group: pizza
 
 - Kenneth Wang
   - wrote part of heap.java
+
+## Running
+
+To run the program, run `mvn clean compile exec:java` in the same directory as the `pom.xml` file (root directory of the repo) and enter the file name of the data text file when prompted.
