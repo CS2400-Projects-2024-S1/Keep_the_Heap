@@ -1,6 +1,7 @@
 package org.pizza;
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException; 
 import java.util.ArrayList;
@@ -10,14 +11,14 @@ public class HeapDriver {
         Scanner scnr = new Scanner(System.in);
         Scanner fscnr;
         System.out.print("Enter the data file to open: ");
-        String file = scnr.nextLine();
+        String inputFileString = scnr.nextLine();
         Boolean hasFile = false;
         ArrayList<Integer> values;
         do {
             values = new ArrayList<Integer>();
-            File f = new File(file);
+            File inputFile = new File(inputFileString);
             try {
-                fscnr = new Scanner(f);
+                fscnr = new Scanner(inputFile);
                 while (fscnr.hasNextInt()) {
                     values.add(fscnr.nextInt());
                 }
@@ -78,7 +79,17 @@ public class HeapDriver {
         sb.append("=====================================================================\n");
 
         System.out.println(sb.toString());
-
+        String outputFileString = inputFileString.substring(0, inputFileString.length() - 4) + "_output.txt";
+        File outputFile = new File(outputFileString);
+        try {
+            outputFile.createNewFile();
+            FileWriter outputWriter = new FileWriter(outputFileString);
+            outputWriter.write(sb.toString());
+            outputWriter.close();
+          } catch (IOException e) {
+            System.out.println("An error occurred while writing to the output file.");
+            e.printStackTrace();
+        }
         scnr.close();
     }
 }
