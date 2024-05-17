@@ -4,7 +4,7 @@ Group: pizza
 
 ## Group Members
 - Jennifer Garcia (jennifere@cpp.edu) Github: fercia
-- Monika Crichton (mcrichton@cpp.edu) Github: JustTransScripts
+- {REDACTED} ({REDACTED}) Github: JustTransScripts
 - Kenneth Wang (kennethwang@cpp.edu) Github: kennethtl0522
 
 ## Roles and Contributions:
@@ -13,7 +13,7 @@ Group: pizza
   - wrote part of heap.java
   - helped with random and output txt files
 
-- Monika Crichton
+- {JustTransScripts}
   - Wrote HeapDriver.java
 
 - Kenneth Wang
